@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Job;
 use App\Models\Offer;
 use App\Models\Orders;
 use App\Models\Slider;
@@ -9,11 +10,13 @@ use App\Mail\ContactUs;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subscriber;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\OrderFormRequest;
 use App\Http\Requests\SubscribeFormRequest;
+use App\Http\Requests\ApplicationFormRequest;
 
 class FrontendController extends Controller
 {
@@ -33,10 +36,76 @@ class FrontendController extends Controller
         return view('frontend.contact');
     }
 
-    public function services(){
+    public function offer(){
         $offers = Offer::latest()->get();
-        return view('frontend.services', compact('offers'));
+        return view('frontend.offers', compact('offers'));
     }
+
+    public function worker(){
+        // $offers = Offer::latest()->get();
+        return view('frontend.worker');
+    }
+
+    public function hrservice(){
+        // $offers = Offer::latest()->get();
+        return view('frontend.hr-services');
+    }
+
+    public function jobs(){
+        $jobs = Job::where('status', '0')->latest()->paginate(10);
+        return view('frontend.jobs', compact('jobs'));
+    }
+
+    public function jobView(string $slug){
+        // $jobs = Job::findOrFail($slug);
+        $jobs = Job::where('slug', $slug)->first();
+        return view('frontend.view', compact('jobs'));
+    }
+
+    public function jobApplication(string $slug){
+        // $jobs = Job::findOrFail($slug);
+        $jobs = Job::where('slug', $slug)->first();
+        return view('frontend.application', compact('jobs'));
+    }
+
+    public function storeApplication(ApplicationFormRequest $request){
+        $validatedData = $request->validated();
+
+        $application = new Application;
+
+        $application->job_title = $validatedData['job_title'];
+        $application->firstname = $validatedData['firstname'];
+        $application->middlename = $validatedData['middlename'];
+        $application->lastname = $validatedData['lastname'];
+        $application->email = $validatedData['email'];
+        $application->phone = $validatedData['phone'];
+        $application->position = $validatedData['position'];
+        $application->coverletter = $validatedData['coverletter'];
+
+        if($request->hasFile('cv')){
+            $file = $request->file('cv');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+
+            $file->move('uploads/cv/',$filename);
+            $application->cv = 'uploads/cv/'.$filename;
+        }
+
+        if($request->hasFile('other')){
+            $file = $request->file('other');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+
+            $file->move('uploads/other/',$filename);
+            $application->other = 'uploads/cv/'.$filename;
+        }
+
+        $application->save();
+
+        return redirect()->back()->with('message','Your Application have been submitted successfully. You will be contacted via email when due.');
+    }
+
+
 
     public function product($category_slug){
         $category = Category::where('slug',$category_slug)->first();
@@ -78,6 +147,8 @@ class FrontendController extends Controller
             return redirect()->back();
         }
     }
+
+
 
     public function storeOrder(OrderFormRequest $request){
         $validatedData = $request->validated();

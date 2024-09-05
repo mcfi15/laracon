@@ -13,8 +13,8 @@
         <div class="col-md-4">
           <div class="card card-secondary">
             <div class="card-body skew-shadow">
-              <h1>{{ $allproducts }}</h1>
-              <h5 class="op-8">Products</h5>
+              <h1>{{ $allapp }}</h1>
+              <h5 class="op-8">Applications</h5>
               <div class="pull-right">
                 <h3 class="fw-bold op-8"></h3>
               </div>
@@ -24,8 +24,8 @@
         <div class="col-md-4">
           <div class="card card-secondary bg-secondary-gradient">
             <div class="card-body bubble-shadow">
-              <h1>{{ $allorders }}</h1>
-              <h5 class="op-8">Orders</h5>
+              <h1>{{ $alljobs }}</h1>
+              <h5 class="op-8">Jobs</h5>
               <div class="pull-right">
                 <h3 class="fw-bold op-8"></h3>
               </div>
@@ -47,7 +47,7 @@
 
 
       <div class="row">
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
           <div class="card card-secondary">
             <div class="card-body skew-shadow">
               <h1>{{ $allcategories }}</h1>
@@ -57,7 +57,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
         <div class="col-md-4">
           <div class="card card-secondary bg-secondary-gradient">
             <div class="card-body bubble-shadow">

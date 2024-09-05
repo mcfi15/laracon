@@ -35,8 +35,8 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/assets/css/plugins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/assets/css/kaiadmin.min.css') }}" />
 
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script> --}}
-    <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    {{-- <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script> --}}
 
   
     <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -52,8 +52,6 @@
             @include('layouts.inc.admin.navbar')
 
             @yield('content')
-        
-
         
 
         <footer class="footer">
@@ -209,17 +207,19 @@
   });
 </script>
 
+{{-- <script src="{{ asset('ckeditor/ckeditor.js') }}"></script> --}}
 
-{{-- <script>
+
+<script>
   ClassicEditor
-  .create( document.querySelector( '#description' ) )
+  .create( document.querySelector( '#coverletter' ) )
   .catch( error => {
   console.error( error );
   });
-</script> --}}
+</script>
 
 {{-- <script>
   CKEDITOR.replace( 'description' );
-</script> --}}
-</body>
+</script>
+</body> --}}
 </html>

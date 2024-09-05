@@ -38,27 +38,41 @@
             </a>
             
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{ url('admin/orders') }}">
               <i class="fab fa-first-order"></i>
               <p>Orders</p>
             </a>
             
-          </li>
+          </li> --}}
           <li class="nav-item">
+            <a href="{{ url('admin/applications') }}">
+              <i class="fab fa-first-order"></i>
+              <p>Applications</p>
+            </a>
+            
+          </li>
+          {{-- <li class="nav-item">
             <a href="{{ url('admin/category') }}">
               <i class="fas fa-list-alt"></i>
               <p>Categories</p>
             </a>
             
-          </li>
+          </li> --}}
           <li class="nav-item">
+            <a href="{{ url('admin/jobs') }}">
+              <i class="fab fa-product-hunt"></i>
+              <p>Jobs</p>
+            </a>
+            
+          </li>
+          {{-- <li class="nav-item">
             <a href="{{ url('admin/products') }}">
               <i class="fab fa-product-hunt"></i>
               <p>Products</p>
             </a>
             
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="{{ url('admin/subscribers') }}">
               <i class="fab fa-product-hunt"></i>

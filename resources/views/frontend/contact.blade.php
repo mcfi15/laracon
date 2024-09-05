@@ -105,7 +105,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
+            {{-- <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="rounded h-100">
                     <iframe width="520" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=520&height=400&hl=en&q=NO%20G02,%20TINGKAT%20G,%20PANGSAPURI%20BESTARI,%20PERSIARAN%20KEMAJUAN,%20SEKSYEN%2016,%2040200%20SHAH%20ALAM%20SELANGOR+(Company%20Address)&t=&z=12&ie=UTF8&iwloc=B&output=embed"></iframe> <a href='https://www.acadoo-medizin.com/'>www.acadoo-medizin.com</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=629a16957dd80e24ea600dba674c089c6af0cdf6'></script>
                     <div class="d-flex align-items-center justify-content-center bg-primary rounded-bottom p-4">
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

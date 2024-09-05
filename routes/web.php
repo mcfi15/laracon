@@ -20,15 +20,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function () {
     Route::get('/','index');
-    Route::POST('/sub', 'storeEmail');
+    Route::post('/sub', 'storeEmail');
     Route::get('/about', 'about');
     Route::get('/contact', 'contact');
     Route::post('/post-message', 'postMessage');
-    Route::get('/services', 'services');
-    Route::get('/categories/{category_slug}', 'product');
-    Route::get('/product-view/{category_slug}/{product_slug}', 'productView');
-    Route::get('/place-order/{category_slug}/{product_slug}', 'placeOrder');
-    Route::post('/place-order', 'storeOrder');
+    Route::get('/offers', 'offer');
+    Route::get('/worker', 'worker');
+    Route::get('/hr-services', 'hrservice');
+    Route::get('/jobs', 'jobs');
+    Route::get('/view/{slug}', 'jobView');
+    Route::get('/application/{slug}', 'jobApplication');
+    Route::post('/application', 'storeApplication');
+
+    // Route::get('/categories', 'product');
+    // Route::get('/product-view/{category_slug}/{product_slug}', 'productView');
+    // Route::get('/place-order/{category_slug}/{product_slug}', 'placeOrder');
+    // Route::post('/place-order', 'storeOrder');
 
     Route::get('/search', 'searchProducts');
     
@@ -57,6 +64,12 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
         Route::get('subscribers/{subscriber}/delete','destroy');
     });
 
+    Route::controller(App\Http\Controllers\Admin\ApplicationController::class)->group(function () {
+        Route::get('applications','index');
+        Route::get('applications/{job}/view','view');
+        Route::get('applications/{job}/delete','destroy');
+    });
+
     Route::controller(App\Http\Controllers\Admin\SliderController::class)->group(function () {
         Route::get('sliders','index');
         Route::get('sliders/create','create');
@@ -64,6 +77,16 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
         Route::get('sliders/{slider}/edit','edit');
         Route::put('sliders/{slider}','update');
         Route::get('sliders/{slider}/delete','destroy');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\JobController::class)->group(function () {
+        Route::get('jobs','index');
+        Route::get('jobs/create','create');
+        Route::post('jobs/create','store');
+        Route::get('jobs/{job}/edit','edit');
+        Route::put('jobs/{job}','update');
+        Route::get('jobs/{job}/view','view');
+        Route::get('jobs/{job}/delete','destroy');
     });
 
     Route::controller(App\Http\Controllers\Admin\CategoryController::class)->group(function () {
